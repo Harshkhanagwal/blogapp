@@ -8,9 +8,6 @@ const router = new express.Router();
 
 router.use(bodyParser.urlencoded({ extended: true }))
 
-const posts = Post.find();
-let size = 0
-
 
 // post 
 
