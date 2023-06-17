@@ -21,9 +21,9 @@ app.use(router)
 
 
 // get routs
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
 
-    const postData = await Post.find();
+    const postData = Post.find();
 
     res.render('home', {
         posts: postData
