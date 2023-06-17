@@ -1,0 +1,35 @@
+<%- include('partials/header'); %>
+    <button class="add-blog">
+        <a href="/upload"> <i class="fa-solid fa-plus"></i></a>
+    </button>
+
+    <h1>Blogs</h1>
+    <% if (posts.length === 0 ) {%>
+        <h5 align="center">No blog has been created yet</h1>
+    <% }%>
+
+    <% posts.map((post)=> {%>
+        <a href="/post/<%= post._id %>">
+
+            <div class="posts">
+                <div class="post-bx">
+                    <div class="post-content">
+                        <h1>
+                            <%= post.title %>
+                        </h1>
+                        <div class="post-body">
+                            <p>
+                                <%= post.body %>
+                            </p>
+                        </div>
+                        <span>- by
+                            <%= post.authorName%>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+<% })%>
+
+<%- include('partials/footer'); %>

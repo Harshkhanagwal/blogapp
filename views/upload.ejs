@@ -1,0 +1,23 @@
+<%- include('partials/header'); %>
+
+    <h1>Upload your blog</h1>
+    <hr>
+    <form action="/upload" method="post">
+        <label for="title">Title</label><br>
+        <input type="text" class="upload-f" name="title" placeholder="Enter the Title" required>
+        <br>
+
+        <label for="username">Author Name</label><br>
+        <input type="text" class="upload-f" name="username" placeholder="Enter Your Name" required>
+        <br>
+
+        <label for="blogBody">Body</label><br>
+        <textarea class="upload-f upload-b" name="blogBody" required>Enter the content of blog here...</textarea>
+        <br>
+
+
+        <input type="submit" class="submit-bt" value="Publish">
+    </form>
+
+
+    <%- include('partials/footer'); %>
