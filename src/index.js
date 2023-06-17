@@ -23,11 +23,13 @@ app.use(router)
 // get routs
 app.get("/", (req, res) => {
 
-    const postData = Post.find();
+    Post.find((err, postData) => {        
+        res.render('home', {
+            posts: postData
+        })
 
-    res.render('home', {
-        posts: postData
-    })
+    });
+
 })
 
 app.get('/about', (req, res) => {
@@ -46,13 +48,13 @@ app.get('/error', (req, res) => {
 
 
 app.get('/post/:id', (req, res) => {
-    
+
     const requestedPostId = req.params.id;
 
     Post.findOne({ _id: requestedPostId }, function (err, post) {
         res.render("post", {
             title: post.title,
-            authorName : post.authorName,
+            authorName: post.authorName,
             body: post.body
         });
     })
