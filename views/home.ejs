@@ -4,11 +4,11 @@
     </button>
 
     <h1>Blogs</h1>
-    <% if (posts.length === 0 ) {%>
+    <% if (data.length === 0 ) {%>
         <h5 align="center">No blog has been created yet</h1>
     <% }%>
 
-    <% posts.forEach((post)=> {%>
+    <% data.forEach((post)=> {%>
         <a href="/post/<%= post._id %>">
 
             <div class="posts">
