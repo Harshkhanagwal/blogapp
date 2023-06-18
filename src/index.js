@@ -20,6 +20,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(router)
 
 
+mongoose.set('strictQuery', false)
+mongoose.set('strictQuery', true)
+
+
 // get routs
 app.get("/", async (req, res) => {
     try{
