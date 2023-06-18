@@ -21,14 +21,13 @@ app.use(router)
 
 
 // get routs
-app.get("/", (req, res) => {
-
-    Post.find((err, postData) => {        
-        res.render('home', {
-            posts: postData
-        })
-
-    });
+app.get("/", async (req, res) => {
+    try{
+        let data = await Post.find();
+        res.render('home', {data : data})
+    }catch(err){
+        throw new Error(err)
+    }
 
 })
 
@@ -47,17 +46,20 @@ app.get('/error', (req, res) => {
 })
 
 
-app.get('/post/:id', (req, res) => {
+app.get('/post/:id', async (req, res) => {
 
     const requestedPostId = req.params.id;
 
-    Post.findOne({ _id: requestedPostId }, function (err, post) {
-        res.render("post", {
-            title: post.title,
-            authorName: post.authorName,
-            body: post.body
-        });
-    })
+    try{
+        let data =  await Post.findOne({ _id: requestedPostId });
+        res.render('post', { data : data})
+        throw new Error("Data Error")
+
+    }catch(err){
+        res.send(err)
+    }
+
+
 })
 
 app.listen(port, () => {
