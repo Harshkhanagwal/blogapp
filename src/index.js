@@ -66,6 +66,12 @@ app.get('/post/:id', async (req, res) => {
 
 })
 
+process.on('unhandledRejection', err => {
+    console.log(`send this error to tracking : ${err.stack}`)
+    console.log('-------------------------------------------')
+})
+
+
 app.listen(port, () => {
     console.log("listening to PORT : " + port)
 })
